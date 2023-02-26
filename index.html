@@ -1,0 +1,26 @@
+<!DOCTYPE html> <html lang="en"> <head>
+    <meta charset="UTF-8">
+    <title>Display products</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+$.ajax({
+        "url" : "http://myjavaapi.us-east-1.elasticbeanstalk.com/products",
+       // headers:('Access-Control-Allow-Origin', 'http://localhost:5500'),
+        "type" : "GET",
+        "success" : function(data) {              
+                var projectData= JSON.stringify(data);
+                $("#projectInfo").text(projectData);
+        },
+        "error" : function(response,error)
+        {
+            console.log("ERROR: "+JSON.stringify(response));
+        }
+    });
+});
+</script>
+</head>
+<body> 
+    <p id="projectInfo"></p>
+</body>
+ </html>
